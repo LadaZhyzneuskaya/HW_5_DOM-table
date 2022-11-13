@@ -1,0 +1,13 @@
+.title {
+  margin: 50px 0 50px;
+}
+
+.image {
+  object-fit: cover;
+  object-position: top;
+}
+
+.image-block {
+  display: flex;
+  height: 160px;
+}
