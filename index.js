@@ -75,7 +75,7 @@ fetch('https://dummyjson.com/products')
     // ----------  SEARCH FILTER ----------
 
     const formSearch = document.querySelector('form.d-flex');
-    const titleProductList = document.querySelectorAll('.card-title');
+    const titleProductList = document.querySelectorAll('h5.card-title');
     const descriptionProductList = document.querySelectorAll('p.card-text');
 
     formSearch.addEventListener('submit', (event) => {
@@ -88,16 +88,15 @@ fetch('https://dummyjson.com/products')
       [...titleProductList].find((title) => {
         if (title.innerText.toLowerCase().includes(value) === false) {
           title.closest('div.card').classList.add('d-none');
+
+          [...descriptionProductList].find((descr) => {
+            if (descr.innerText.toLowerCase().includes(value)) {
+              descr.closest('div.card').classList.remove('d-none');
+            }
+          });
+
         } else {
           title.closest('div.card').classList.remove('d-none');
-        }
-      });
-
-      [...descriptionProductList].find((descr) => {
-        if (descr.innerText.toLowerCase().includes(value) === false) {
-          descr.closest('div.card').classList.add('d-none');
-        } else {
-          descr.closest('div.card').classList.remove('d-none');
         }
       });
 
