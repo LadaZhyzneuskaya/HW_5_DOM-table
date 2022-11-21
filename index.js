@@ -1,5 +1,5 @@
 fetch('https://dummyjson.com/products')
-  .then(res => res.json())
+  .then((res) => res.json())
   .then((data) => {
     console.log(data.products);
     // Start here :)
@@ -14,7 +14,7 @@ fetch('https://dummyjson.com/products')
       element.textContent = text;
 
       return element;
-    }
+    };
 
     products.forEach((product) => {
       const column = makeElement('div', 'col');
@@ -53,7 +53,7 @@ fetch('https://dummyjson.com/products')
 
       const cardFooterButtonBlock = makeElement('div', 'd-grid');
       cardFooterButtonBlock.classList.add('gap-2');
-    
+
       const cardFooterAddButton = makeElement('button', 'btn', 'Add to cart');
       cardFooterAddButton.classList.add('btn-primary');
       cardFooterAddButton.classList.add('my-2');
@@ -69,8 +69,6 @@ fetch('https://dummyjson.com/products')
       column.append(cardWrapper);
       container.append(column);
     });
-
-
 
     // ----------  SEARCH FILTER ----------
 
@@ -105,15 +103,13 @@ fetch('https://dummyjson.com/products')
       }
     });
 
-
-
     // ---------- OPEN/CLOSE CART PAGE ----------
 
     const cartPage = document.querySelector('div.cart');
 
     const showCartPage = () => {
       cartPage.classList.toggle('cart-off');
-    }
+    };
 
     const openCartButton = document.getElementById('showCart');
     openCartButton.addEventListener('click', showCartPage);
@@ -121,8 +117,6 @@ fetch('https://dummyjson.com/products')
     const cartCloseButton = document.querySelector('button.cart-close-btn');
     cartCloseButton.addEventListener('click', showCartPage);
 
-
-  
     // ---------- CART TOTAL PRICE ----------
 
     function calcCartPrice() {
@@ -138,13 +132,11 @@ fetch('https://dummyjson.com/products')
         const currentPrice = parseInt(amountEl.innerText) * parseInt(priceEl.innerText);
         
         totalPrice += currentPrice;
-      })
+      });
 
       cartTotalPriceInfo.innerText = totalPrice.toFixed(2);
       buttonCartTotalPrice.innerText = totalPrice.toFixed(2);
     }
-
-
 
     // ---------- ADD PRODUCTS TO CART ----------
 
@@ -172,7 +164,7 @@ fetch('https://dummyjson.com/products')
           title: card.querySelector('.card-title').innerText,
           description: card.querySelector('.card-text').innerText,
           price: Number(cardPriceNumber),
-        }
+        };
 
         // The presence of the same item in the cart
         const itemInCart = orderList.querySelector(`[data-id="${productInfo.id}"]`);
@@ -214,17 +206,17 @@ fetch('https://dummyjson.com/products')
           } else {
             item.classList.remove('bg-opacity-50');
           }
-        })
+        });
 
         toggleCartStatus();
 
         calcCartPrice();
       }
-    })
-
-
+    });
 
     // ---------- COUNTER ----------
+
+    let counter;
 
     document.addEventListener('click', (event) => {
       if (event.target.dataset.action === 'minus' || event.target.dataset.action === 'plus') {
@@ -249,9 +241,7 @@ fetch('https://dummyjson.com/products')
       }
 
       calcCartPrice();
-    })
-
-
+    });
 
     // ---------- CART STATUS ----------
 
@@ -268,8 +258,6 @@ fetch('https://dummyjson.com/products')
         cartOrderButton.disabled = true;
       }
     }
-
-
 
     // ---------- REMOVE PRODUCT FROM CART ----------
 
