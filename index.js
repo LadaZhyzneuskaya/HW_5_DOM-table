@@ -109,6 +109,11 @@ fetch('https://dummyjson.com/products')
 
     const showCartPage = () => {
       cartPage.classList.toggle('cart-off');
+      if (cartPage.classList.contains('cart-off') === false) {
+        document.body.classList.add('hidden');
+      } else {
+        document.body.classList.remove('hidden');
+      }
     };
 
     const openCartButton = document.getElementById('showCart');

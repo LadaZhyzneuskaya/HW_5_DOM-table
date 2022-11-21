@@ -1,3 +1,7 @@
+.hidden {
+  overflow: hidden;
+}
+
 .title {
   margin: 60px 0 50px;
 }
